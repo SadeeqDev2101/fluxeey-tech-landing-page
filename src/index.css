@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  color: #0f172a;
+  background: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.ft-home {
+  letter-spacing: -0.01em;
+}
+
+.ft-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  color: #0e7490;
+}
+
+.ft-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@keyframes ftRiseIn {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ft-animate-in {
+  opacity: 0;
+  animation: ftRiseIn 800ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.ft-delay-1 {
+  animation-delay: 120ms;
+}
+
+.ft-delay-2 {
+  animation-delay: 240ms;
+}
+
+.ft-delay-3 {
+  animation-delay: 360ms;
+}
+
+.ft-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 650ms ease,
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ft-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ft-animate-in,
+  .ft-reveal {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ─── Hero system-visual animations (restrained) ─────────────── */
+@keyframes ftHeroNodeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes ftHeroEdgeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes ftHeroPulse {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.ft-hero-node {
+  opacity: 0;
+  animation: ftHeroNodeIn 600ms ease-out forwards;
+  transform-origin: center;
+}
+.ft-hero-edge {
+  opacity: 0;
+  animation: ftHeroEdgeIn 900ms ease-out forwards;
+}
+.ft-hero-pulse {
+  animation: ftHeroPulse 3s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ft-hero-node,
+  .ft-hero-edge,
+  .ft-hero-pulse {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .ft-hero-pulse {
+    display: none;
+  }
+}
